@@ -56,3 +56,14 @@ product  |references  |NOT NULL|
 birth_year  |      |         |
 birth_month |      |         |
 birth_day   |      |         |
+
+credit
+|Column          |Typ    |Options |
+|----------------|-------|--------|
+|deadline_year   |       |        |
+|deadline_month  |       |        |
+|security_code   |       |        |
+postal_code      |       |        |
+from_city        |       |        |
+from_address     |       |        |
+phone_number     |       |        |
