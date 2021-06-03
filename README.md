@@ -37,28 +37,28 @@ active_hash使用
 ##comments 
 |Column  |Type        |Options |
 |--------|------------|--------|
-text     |text        |NOT NULL|
-user     |references  |NOT NULL|
-product  |references  |NOT NULL|
+text     |text        |null: false|
+user     |references  |null: false|
+product  |references  |null: false|
 |--------|------------|--------|
 |belongs_to :user              |
 |belongs_to :product           |
 
 ##user
-|Column     |Typ    |Options |
-|-----------|-------|--------|
-|email      |string |NOT NULL|
-|password   |string |NOT NULL|
-|first_name |string |NOT NULL|
-|last_name  |string |NOT NULL|
-|first_kana |string |NOT NULL|
-|last_kana  |string |NOT NULL|
-birth_year  |      |         |
-birth_month |      |         |
-birth_day   |      |         |
+|Column               |Type    |Options |
+|---------------------|--------|------------|
+|nickname             |string  |unique: true|
+|email                |string  |unique: true|
+|encrypted_password   |string  |null:  false|
+|first_name           |string  |null:  false|
+|last_name            |string  |null:  false|
+|first_kana           |string  |null:  false|
+|last_kana            |string  |null:  false|
+|birth                |integer |dat         |
+
 
 credit
-|Column          |Typ    |Options |
+|Column          |Type   |Options |
 |----------------|-------|--------|
 |deadline_year   |       |        |
 |deadline_month  |       |        |
@@ -67,3 +67,12 @@ postal_code      |       |        |
 from_city        |       |        |
 from_address     |       |        |
 phone_number     |       |        |
+
+
+
+##Purchase history
+|Column               |Type    |Options |
+|---------------------|--------|------------|
+|product_id           |string  |unique: true|
+|user_id              |        |
+
