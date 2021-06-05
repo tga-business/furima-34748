@@ -2,12 +2,15 @@
 
 
 ##product
-  |Column   |Type     |Options |
-  |---------|---------|--------|
-  |title    |string   |NOT NULL|
-  |category |text     |NOT NULL|
-  |price    |integer  |NOT NULL|
-
+  |Column                |Type     |Options    |
+  |----------------------|---------|-----------|
+  |title                 |string   |null: false|
+  |category              |text     |null: false|
+  |price                 |integer  |null: false|
+  |status_id             |integer  |null: false|
+  |delivery_charge_id    |integer  |null: false|
+  |from_id               |integer  |null: false|
+  |burden_id             |integer  |null: false|
   belongs_to :user
   has_many   :comments
   has_many   :status
@@ -34,45 +37,40 @@ active_hash使用
 active_hash使用
 発送料の負担について記述
 
-##comments 
-|Column  |Type        |Options |
-|--------|------------|--------|
-text     |text        |null: false|
-user     |references  |null: false|
-product  |references  |null: false|
-|--------|------------|--------|
-|belongs_to :user              |
-|belongs_to :product           |
+
 
 ##user
 |Column               |Type    |Options |
 |---------------------|--------|------------|
-|nickname             |string  |unique: true|
-|email                |string  |unique: true|
-|encrypted_password   |string  |null:  false|
-|first_name           |string  |null:  false|
-|last_name            |string  |null:  false|
-|first_kana           |string  |null:  false|
-|last_kana            |string  |null:  false|
-|birth                |integer |date        |
+|nickname             |string  |null: false|
+|email                |string  |unique: true, null: false|
+|encrypted_password   |string  |null: false|
+|first_name           |string  |null: false|
+|last_name            |string  |null: false|
+|first_kana           |string  |null: false|
+|last_kana            |string  |null: false|
+|birth                |date    |null: false|
+|product_id           |date    |null: false|
 
 
-credit
+##住所
 |Column          |Type   |Options |
 |----------------|-------|--------|
-|deadline_year   |integer       |null:  false        |
-|deadline_month  |integer       |null:  false        |
-|security_code   |integer  |下四桁、もしくは３桁のメソッド        |
 |postal_code     |string       |null:  false|
 |from_city       |string       |null:  false|
-|from_address    |integer       |        |
+|from_address    |integer      |null:  false|
+|building        |string       |            |
 |phone_number    |string       |null:  false|
+|from_id         |integer      |null:  false|
 has_many :from
 
 
-##Purchase history
+##Purchase history(購入履歴)
 |Column               |Type    |Options |
 |---------------------|--------|------------|
-|product_id           |string  |unique: true|
-|user_id              |        |
+|product_id           |integer  |
+|user_id              |integer  |
 
+
+
+##comment、creditは追加で実装
