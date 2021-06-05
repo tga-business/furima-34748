@@ -63,10 +63,10 @@ credit
 |deadline_year   |       |        |
 |deadline_month  |       |        |
 |security_code   |       |        |
-postal_code      |       |        |
-from_city        |       |        |
-from_address     |       |        |
-phone_number     |       |        |
+|postal_code     |       |        |
+|from_city       |       |        |
+|from_address    |       |        |
+|phone_number    |       |        |
 
 
 
