@@ -67,7 +67,7 @@ has_many :products
 |building        |string       |            |
 |phone_number    |string       |null:  false|
 |from_id         |references   |null:  false|
-has_many :from
+ has_many :from
  belongs_to :purchase history
 
 
