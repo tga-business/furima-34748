@@ -54,20 +54,21 @@ product  |references  |null: false|
 |last_name            |string  |null:  false|
 |first_kana           |string  |null:  false|
 |last_kana            |string  |null:  false|
-|birth                |integer |dat         |
+|birth                |integer |date        |
 
 
 credit
 |Column          |Type   |Options |
 |----------------|-------|--------|
-|deadline_year   |       |        |
-|deadline_month  |       |        |
-|security_code   |       |        |
-|postal_code     |       |        |
-|from_city       |       |        |
-|from_address    |       |        |
-|phone_number    |       |        |
-
+|card_number     |integer       |null:  false        |
+|deadline_year   |integer       |null:  false        |
+|deadline_month  |integer       |null:  false        |
+|security_code   |integer  |下四桁、もしくは３桁のメソッド        |
+|postal_code     |integer       |null:  false|
+|from_city       |string       |null:  false|
+|from_address    |integer       |        |
+|phone_number    |integer       |null:  false|
+has_many :from
 
 
 ##Purchase history
