@@ -60,14 +60,13 @@ product  |references  |null: false|
 credit
 |Column          |Type   |Options |
 |----------------|-------|--------|
-|card_number     |integer       |null:  false        |
 |deadline_year   |integer       |null:  false        |
 |deadline_month  |integer       |null:  false        |
 |security_code   |integer  |下四桁、もしくは３桁のメソッド        |
-|postal_code     |integer       |null:  false|
+|postal_code     |string       |null:  false|
 |from_city       |string       |null:  false|
 |from_address    |integer       |        |
-|phone_number    |integer       |null:  false|
+|phone_number    |string       |null:  false|
 has_many :from
 
 
