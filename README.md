@@ -1,7 +1,7 @@
 # README
 
 
-## product
+## products
   |Column                |Type        |Options          |
   |----------------------|------------|-----------------|
   |title                 |string      |null: false      |
@@ -23,33 +23,33 @@
   has_many   :burden
   has_many   :esd
 
-## category 
+# category
 active_hash使用
 カテゴリーを記述
 belongs_to :product
 
-## status
+# status
 active_hash使用
 商品の状態についての選択肢を記述予定
 belongs_to :product
 
-## prefecture
+# prefecture
 active_hash使用
 都道府県記述
 
 
-##esd
+# esd
 active_hash使用
 発送日時の選択肢について記述
 
 
-##burden
+# burden
 active_hash使用
 発送料の負担について記述
 
 
 
-##user
+# users
 |Column               |Type    |Options                  |
 |---------------------|--------|-------------------------|
 |nickname             |string  |null: false              |
@@ -64,7 +64,7 @@ belongs_to :purchase_history
 has_many :products
 
 
-##street_address(住所)
+# street_address(住所)
 |Column          |Type         |Options     |
 |----------------|-------------|------------|
 |postal_code     |string       |null:  false|
@@ -77,7 +77,7 @@ has_many :products
  belongs_to :purchase_history
  has_many :prefecture
 
-##purchase_history(購入履歴)
+# #purchase_histories(購入履歴)
 |Column               |Type        |Options          |
 |---------------------|------------|-----------------|
 |product              |references  |foreign_key: true|
