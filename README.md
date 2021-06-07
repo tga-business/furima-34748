@@ -5,7 +5,7 @@
   |Column                |Type        |Options          |
   |----------------------|------------|-----------------|
   |title                 |string      |null: false      |
-  |description           |string      |null: false      |
+  |description           |text        |null: false      |
   |category              |integer     |null: false      |
   |price                 |integer     |null: false      |
   |status_id             |integer     |null: false      |
@@ -15,7 +15,7 @@
   |esd_id                |integer     |null: false      |
   |user                  |references  |foreign_key: true|
   belongs_to :user
-  belongs_to :purchase_history
+  has_many :purchase_history
   has_many   :comments
   has_many   :status
   has_many   :delivery_charge
@@ -60,7 +60,7 @@ active_hash使用
 |first_kana           |string  |null: false              |
 |last_kana            |string  |null: false              |
 |birth                |date    |null: false              |
-belongs_to :purchase_history
+has_many :purchase_history
 has_many :products
 
 
@@ -82,8 +82,8 @@ has_many :products
 |---------------------|------------|-----------------|
 |product              |references  |foreign_key: true|
 |user                 |references  |foreign_key: true|
-has_one :users
-has_one :products
-has_one  :street_address
+ belongs_to :users
+ belongs_to :products
+ has_one  :street_address
 
 ##comment、creditは追加で実装
