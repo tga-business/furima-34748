@@ -76,11 +76,7 @@ has_many :products
  belongs_to :purchase_history
 
 
-<<<<<<< Updated upstream
-# #purchase_histories(購入履歴)
-=======
 # purchase_histories(購入履歴)
->>>>>>> Stashed changes
 |Column               |Type        |Options          |
 |---------------------|------------|-----------------|
 |product              |references  |foreign_key: true|
@@ -89,8 +85,4 @@ has_many :products
  belongs_to :product
  has_one  :street_address
 
-<<<<<<< Updated upstream
 ##comment、creditは追加で実装
-=======
-##comment、creditは追加で実装
->>>>>>> Stashed changes
