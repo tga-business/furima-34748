@@ -9,19 +9,17 @@
   |category              |integer     |null: false      |
   |price                 |integer     |null: false      |
   |status_id             |integer     |null: false      |
-  |delivery_charge_id    |integer     |null: false      |
   |prefecture_id         |integer     |null: false      |
   |burden_id             |integer     |null: false      |
   |esd_id                |integer     |null: false      |
   |user                  |references  |foreign_key: true|
   belongs_to :user
-  has_many :purchase_history
+  has_one    :purchase_history
   has_many   :comments
-  has_many   :status
-  has_many   :delivery_charge
-  has_many   :prefecture
-  has_many   :burden
-  has_many   :esd
+  has_many   :statuses
+  has_many   :prefectures
+  has_many   :burdens
+  has_many   :esds
 
 # category
 active_hash使用
@@ -60,7 +58,7 @@ active_hash使用
 |first_kana           |string  |null: false              |
 |last_kana            |string  |null: false              |
 |birth                |date    |null: false              |
-has_many :purchase_history
+has_many :purchase_histories
 has_many :products
 
 
@@ -72,18 +70,19 @@ has_many :products
 |from_address    |integer      |null:  false|
 |building        |string       |            |
 |phone_number    |string       |null:  false|
-|prefecture_id   |references   |null:  false|
- has_many :prefecture
+|prefecture_id   |integer      |null:  false|
+|purchase_history              |references  |foreign_key: true|
+ has_many :prefectures
  belongs_to :purchase_history
- has_many :prefecture
+ has_many :prefectures
 
 # #purchase_histories(購入履歴)
 |Column               |Type        |Options          |
 |---------------------|------------|-----------------|
 |product              |references  |foreign_key: true|
 |user                 |references  |foreign_key: true|
- belongs_to :users
- belongs_to :products
+ belongs_to :user
+ belongs_to :product
  has_one  :street_address
 
 ##comment、creditは追加で実装
