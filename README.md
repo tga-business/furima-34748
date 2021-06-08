@@ -76,7 +76,7 @@ has_many :products
  belongs_to :purchase_history
 
 
-# purchase_histories(購入履歴)
+# #purchase_histories(購入履歴)
 |Column               |Type        |Options          |
 |---------------------|------------|-----------------|
 |product              |references  |foreign_key: true|
