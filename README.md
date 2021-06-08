@@ -6,7 +6,7 @@
   |----------------------|------------|-----------------|
   |title                 |string      |null: false      |
   |description           |text        |null: false      |
-  |category              |integer     |null: false      |
+  |category_id           |integer     |null: false      |
   |price                 |integer     |null: false      |
   |status_id             |integer     |null: false      |
   |prefecture_id         |integer     |null: false      |
@@ -67,14 +67,14 @@ has_many :products
 |----------------|-------------|------------|
 |postal_code     |string       |null:  false|
 |from_city       |string       |null:  false|
-|from_address    |integer      |null:  false|
+|from_address    |string       |null:  false|
 |building        |string       |            |
 |phone_number    |string       |null:  false|
 |prefecture_id   |integer      |null:  false|
 |purchase_history              |references  |foreign_key: true|
  has_many :prefectures
  belongs_to :purchase_history
- has_many :prefectures
+
 
 # #purchase_histories(購入履歴)
 |Column               |Type        |Options          |
