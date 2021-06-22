@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
 
-    it 'emailが空では登録できないこと' do
+    it '@がないと登録できないこと' do
       @user.email = 'testmailaddres'
       @user.valid?
       expect(@user.errors.full_messages).to include("Email is invalid")
@@ -126,6 +126,18 @@ RSpec.describe User, type: :model do
 
     it 'first_kanaのフリガナがカタカナでなければ登録できないこと'do
       @user.first_kana = 'たろう'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First kana is invalid")
+    end  
+
+    it 'last_kanaのフリガナが半角カナでは登録できないこと'do
+    @user.last_kana = 'ﾔﾏﾀﾞ'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Last kana is invalid")
+  end  
+
+    it 'first_kanaのフリガナが半角カナでは登録できないこと'do
+      @user.first_kana = 'ﾀﾛｳ'
       @user.valid?
       expect(@user.errors.full_messages).to include("First kana is invalid")
     end  
