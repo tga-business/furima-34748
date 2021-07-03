@@ -16,7 +16,7 @@ class Product < ApplicationRecord
     validates :esd_id
   end
 
-  has_many :user
+  belongs_to :user
   belongs_to :category
   belongs_to :status
   belongs_to :prefecture
