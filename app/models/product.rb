@@ -16,6 +16,9 @@ class Product < ApplicationRecord
     validates :esd_id
   end
 
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "¥300~¥9,999,999で入力して下さい"}
+
+
   belongs_to :user
   belongs_to :category
   belongs_to :status

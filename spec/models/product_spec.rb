@@ -97,6 +97,18 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Esd must be other than 1")
       end
 
+      it "値段が300より小さかった時に出品できないこと" do
+        @product.price = '299'
+        @product.valid?
+        expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
+      end
+  
+      it "値段が9999999より大きかった時に出品できないこと" do
+        @product.price = '10000000'
+        @product.valid?
+        expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
+      end
+
 
       it 'ユーザーが紐付いていなければ投稿できない' do
         @product.user = nil
