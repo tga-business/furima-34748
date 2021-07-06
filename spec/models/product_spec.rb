@@ -11,35 +11,15 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
     
-      it '値段が300円以上であれば投稿できる' do
+      it '値段が300~9999999であれば投稿できる' do
+        @product.price
         expect(@product).to be_valid
       end
 
-      it 'カテゴリーの選択肢について、--以外の選択肢を指定していれば投稿できる' do
-        @product.category_id
+      it '- 販売価格は半角数字のみ保存可能であること' do
+        @product.price = 1000
         expect(@product).to be_valid
       end
-
-      it '商品の状態の選択肢について、--以外の選択肢を指定していれば投稿できる' do
-        @product.status_id
-        expect(@product).to be_valid
-      end
-
-      it '配送料の負担の選択肢について--以外の選択肢を指定していれば投稿できる' do
-        @product.burden_id
-        expect(@product).to be_valid
-      end
-
-      it '発送元の地域の選択肢について--以外の選択肢を指定していれば投稿できる' do
-        @product.prefecture_id
-        expect(@product).to be_valid
-      end
-
-      it '発送までの日数の選択肢について--以外の選択肢を指定していれば投稿できる' do
-        @product.esd_id
-        expect(@product).to be_valid
-      end
-
 
     end
     context '商品を出品できない場合' do
@@ -98,13 +78,13 @@ RSpec.describe Product, type: :model do
       end
 
       it "値段が300より小さかった時に出品できないこと" do
-        @product.price = '299'
+        @product.price = 299
         @product.valid?
         expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
       end
   
       it "値段が9999999より大きかった時に出品できないこと" do
-        @product.price = '10000000'
+        @product.price = 10000000
         @product.valid?
         expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
       end
