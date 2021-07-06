@@ -48,31 +48,31 @@ RSpec.describe Product, type: :model do
       end  
 
       it 'カテゴリーの選択肢について、--を指定していると出品できない' do
-        @product.category_id = '1'
+        @product.category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Category must be other than 1")
       end
 
       it '商品の状態の選択肢について、--を指定指定していると出品できない' do
-        @product.status_id = '1'
+        @product.status_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Status must be other than 1")
       end
 
       it '配送料の負担の選択肢について、--を指定指定していると出品できない' do
-        @product.burden_id = '1'
+        @product.burden_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Burden must be other than 1")
       end
 
       it '発送元の地域の選択肢について、--を指定指定していると出品できない' do
-        @product.prefecture_id = '1'
+        @product.prefecture_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it '発送までの日数の選択肢について、--を指定指定していると出品できない' do
-        @product.esd_id = '1'
+        @product.esd_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Esd must be other than 1")
       end
@@ -89,6 +89,11 @@ RSpec.describe Product, type: :model do
         expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
       end
 
+      it "全角文字では出品できないこと" do
+        @product.price = '１００００'
+        @product.valid?
+        expect(@product.errors[:price]).to include("¥300~¥9,999,999で入力して下さい")
+      end
 
       it 'ユーザーが紐付いていなければ投稿できない' do
         @product.user = nil
