@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # before_action :move_to_index, except:[:index, :new, :create]
   
   def index
-     @product = Product.all  
+     @product = Product.includes(:user).order("created_at DESC")
   end
   def new
     @product = Product.new
