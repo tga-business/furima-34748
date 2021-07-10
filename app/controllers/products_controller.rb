@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  # before_action :set_product, only:[:move_to_index]
-  before_action :authenticate_user!, except: [:index]
+   before_action :set_product, only:[:show,:move_to_index]
+  before_action :authenticate_user!, except: [:index,:show]
 
   # before_action :move_to_index, except:[:index, :new, :create]
   
@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+
+    def show
+      
+    end
   end
 
 private
@@ -25,9 +29,9 @@ private
     params.require(:product).permit(:title, :image, :description, :category_id, :price, :status_id, :prefecture_id, :burden_id, :esd_id).merge(user_id: current_user.id)
   end
 
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
+   def set_product
+     @product = Product.find(params[:id])
+   end
 
   # def move_to_index
 
