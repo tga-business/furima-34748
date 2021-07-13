@@ -27,11 +27,10 @@ class ProductsController < ApplicationController
     end
     
     def edit
-
     end
 
     def update
-      if @product = Product.update(product_params)      
+      if @product.update(product_params)      
         redirect_to product_path
       else
         render :edit
@@ -52,8 +51,8 @@ private
    end
 
    def move_to_index
-
-     unless user_signed_in? && @product.user_id == current_user.id
+    
+     unless @product.user_id == current_user.id
        redirect_to action: :index
      end
    end
