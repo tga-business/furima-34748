@@ -1,12 +1,11 @@
 class OrdersController < ApplicationController
    before_action :order_product,only:[:index,:create]
    before_action :authenticate_user!,only:[:index]
+   before_action :redirect_purchase,only:[:index,:create]
 
   def index
     @order = Order.new
-    if current_user == @product.user || @product.purchase_history.present?
-      redirect_to root_path
-    end
+    
   end
 
     def create
@@ -21,6 +20,12 @@ class OrdersController < ApplicationController
     end
   
     private
+
+    def redirect_purchase
+      if current_user == @product.user || @product.purchase_history.present?
+        redirect_to root_path
+      end
+    end
 
     def order_params
       params.require(:order).permit(:postal_code, :from_city, :from_address, :building, :phone_number,  :prefecture_id,  ).merge(user_id: current_user.id, product_id: params[:product_id] )
