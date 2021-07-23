@@ -7,7 +7,7 @@ class Order
     validates :postal_code, :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :from_city
     validates :from_address
-     validates :phone_number, format: {with: /\A0[5789]0[-]?\d{4}[-]?\d{4}\z/}
+     validates :phone_number, format: {with: /\A\d{10,11}\z/}
      validates :product_id
      validates :user_id
   end

@@ -68,12 +68,17 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
 
-      it '電話番号の数字が１１桁より小さければ保存できない' do
-        @order.phone_number = '0801234567'
+      it '電話番号の数字が10桁より小さければ保存できない' do
+        @order.phone_number = '080123456'
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
 
+      it '電話番号の数字が11桁より大きい場合保存できない' do
+        @order.phone_number = '080123456789'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
 
       it '都道府県のの選択肢について、--を指定指定していると出品できない' do
         @order.prefecture_id = 1
