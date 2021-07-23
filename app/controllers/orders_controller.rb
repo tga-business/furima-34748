@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.new
+    if current_user == @product.user || @product.purchase_history.present?
+      redirect_to root_path
+    end
   end
 
   def new
