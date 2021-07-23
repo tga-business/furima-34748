@@ -1,6 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :postal_code, :from_city, :from_address, :building, :phone_number, :prefecture_id, :purchase_history, :product_id, :user_id
+  attr_accessor :postal_code, :from_city, :from_address, :building, :phone_number, :prefecture_id, :purchase_history, :product_id, :user_id, :token
 
   # ここにバリデーションの処理を書く
   with_options presence:true do
@@ -10,6 +10,7 @@ class Order
      validates :phone_number, format: {with: /\A\d{10,11}\z/}
      validates :product_id
      validates :user_id
+     validates :token
   end
    validates :prefecture_id, numericality: {other_than: 1 }
   
