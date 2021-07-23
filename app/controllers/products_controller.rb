@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
    before_action :set_product, only:[:show,:edit,:update,:destroy]
   before_action :authenticate_user!, except: [:index,:show]
 
-   before_action :move_to_index, except:[:index, :new, :create]
+   before_action :move_to_index, except:[:index, :new, :create,:show]
   
   def index
      @product = Product.includes(:user).order("created_at DESC")
@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
     end
     
     def edit
+      
+      end
     end
 
     def update
@@ -53,9 +55,8 @@ private
 
    def move_to_index
     
-     unless @product.user_id == current_user.id
-       redirect_to action: :index
-     end
+    if @product.purchase_history.present?
+      redirect_to root_path
    end
 
 end

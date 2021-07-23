@@ -26,4 +26,5 @@ class Product < ApplicationRecord
   belongs_to :burden
   belongs_to :esd
   has_one_attached :image
+  has_one :purchase_history
 end
