@@ -81,6 +81,18 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
+      it 'user_idが空では購入できないこと' do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'product_idが空では購入できないこと' do
+        @order.product_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Product can't be blank")
+      end
+
     end
   end
 end
