@@ -18,8 +18,7 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       render :new
-    end
-  
+    end  
   end
 
     def show
@@ -28,7 +27,6 @@ class ProductsController < ApplicationController
     
     def edit
       
-      end
     end
 
     def update
@@ -54,9 +52,9 @@ private
    end
 
    def move_to_index
-    
     if @product.purchase_history.present?
       redirect_to root_path
+    end
    end
 
 end
