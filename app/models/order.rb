@@ -4,7 +4,7 @@ class Order
 
   # ここにバリデーションの処理を書く
   with_options presence:true do
-    validates :postal_code, :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postal_code
     validates :from_city
     validates :from_address
      validates :phone_number, format: {with: /\A\d{10,11}\z/}
@@ -13,6 +13,7 @@ class Order
      validates :token
   end
    validates :prefecture_id, numericality: {other_than: 1 }
+   validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   
   def save
     # 寄付情報を保存し、変数donationに代入する
